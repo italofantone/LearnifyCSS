@@ -1,0 +1,51 @@
+$colors: (
+    red: 0,
+    orange: 30,
+    yellow: 60,
+    //chartreuse: 90,
+    green: 120,
+    //SpringGreen: 150,
+    cyan: 180,
+    azure: 210,
+    blue: 240,
+    //violet: 270,
+    //magenta: 300,
+    //rose: 330
+);
+
+$tones: 9;
+
+$generated-colors: (
+);
+
+@each $color, $hue in $colors {
+    @for $i from 1 through $tones {
+        $percentage: $i * 10; // 10, 20, 30, 40, 50, 60, 70, 80, 90
+        $luminosity: 100 - $percentage; // 90, 80, 70, 60, 50, 40, 30, 20, 10
+
+        /// Example
+        /// key: orange-10
+        /// value: hsl(30, 100%, 90%)
+        $generated-colors: map-merge($generated-colors, (#{$color}-#{$percentage}: hsl($hue, 100%, $luminosity * 1%)));
+    }
+}
+
+@debug $generated-colors;
+
+@mixin generate-colors {
+    @each $key, $value in $generated-colors {
+        .background-color-#{$key} {
+            background-color: $value;
+        }
+
+        .color-#{$key} {
+            color: $value;
+        }
+
+        .text-decoration-color-#{$key} {
+            text-decoration-color: $value;
+        }
+    }
+}
+
+@include generate-colors;

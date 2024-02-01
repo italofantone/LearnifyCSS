@@ -1,0 +1,28 @@
+$base: 16px;
+
+$font-size: (
+    xs: 0.75,
+    12: 0.75,
+
+    sm: 0.875,
+    14: 0.875,
+
+    md: 1,
+    16: 1,
+
+    lg: 1.125,
+    18: 1.125,
+
+    xl: 1.25,
+    20: 1.25
+);
+
+@mixin font-size-utilities {
+    @each $key, $value in $font-size {
+        .font-size-#{$key} {
+            font-size: $value * $base;
+        }
+    }
+}
+
+@include font-size-utilities;

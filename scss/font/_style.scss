@@ -1,0 +1,14 @@
+$font-style: (
+    italic,
+    normal
+);
+
+@mixin font-style-utilities {
+    @each $value in $font-style {
+        .font-style-#{$value} {
+            font-style: $value;
+        }
+    }
+}
+
+@include font-style-utilities;

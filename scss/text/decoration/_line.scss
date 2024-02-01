@@ -1,0 +1,26 @@
+$text-decoration-line: (
+    underline,
+    none,
+    overline,
+    line-through
+);
+
+@mixin text-decoration-line-utilities {
+    @each $value in $text-decoration-line {
+        $class-name: if($value ==none, no-underline, $value);
+
+        .text-decoration-line-#{$value} {
+            text-decoration-line: $value;
+        }
+
+        .#{$class-name} {
+            text-decoration-line: $value;
+        }
+    }
+
+    .text-decoration-line-through {
+        text-decoration-line: line-through;
+    }
+}
+
+@include text-decoration-line-utilities;

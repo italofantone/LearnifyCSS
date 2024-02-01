@@ -1,0 +1,18 @@
+$text-align: (
+    center,
+    end,
+    justify,
+    left,
+    right,
+    start
+);
+
+@mixin text-align-utilities {
+    @each $value in $text-align {
+        .text-align-#{$value} {
+            text-align: $value;
+        }
+    }
+}
+
+@include text-align-utilities;

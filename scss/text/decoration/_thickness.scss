@@ -1,0 +1,33 @@
+$text-decoration-thickness: (
+    auto,
+    from-font,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+);
+
+@mixin text-decoration-thickness-utilities {
+    @each $value in $text-decoration-thickness {
+        $thickness-value: if(type-of($value)==number, $value + px, $value);
+
+        .text-decoration-thickness-#{$value} {
+            text-decoration-thickness: $thickness-value;
+        }
+
+        .thickness-#{$value} {
+            text-decoration-thickness: $thickness-value;
+        }
+    }
+}
+
+@include text-decoration-thickness-utilities;

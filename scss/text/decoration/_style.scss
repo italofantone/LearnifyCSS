@@ -1,0 +1,21 @@
+$text-decoration-style: (
+    solid,
+    double,
+    dotted,
+    dashed,
+    wavy
+);
+
+@mixin text-decoration-style-utilities {
+    @each $value in $text-decoration-style {
+        .text-decoration-style-#{$value} {
+            text-decoration-style: $value;
+        }
+
+        .decoration-#{$value} {
+            text-decoration-line: $value;
+        }
+    }
+}
+
+@include text-decoration-style-utilities;
