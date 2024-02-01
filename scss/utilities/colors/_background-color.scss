@@ -1,0 +1,31 @@
+@mixin generate-background-color-utilities {
+    .background-color-black {
+        background-color: #000000;
+    }
+
+    .bg-color-black {
+        background-color: #000000;
+    }
+
+    .background-color-white {
+        background-color: #FFFFFF;
+    }
+
+    .bg-color-white {
+        background-color: #FFFFFF;
+    }
+
+    @each $color, $values in $colors {
+        @each $level, $hex in $values {
+            .background-color-#{$color}-#{$level} {
+                background-color: $hex;
+            }
+
+            .bg-color-#{$color}-#{$level} {
+                background-color: $hex;
+            }
+        }
+    }
+}
+
+@include generate-background-color-utilities;

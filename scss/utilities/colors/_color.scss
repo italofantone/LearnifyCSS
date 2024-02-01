@@ -1,0 +1,31 @@
+@mixin generate-color-utilities {
+    .text-color-black {
+        color: #000000;
+    }
+
+    .text-black {
+        color: #000000;
+    }
+
+    .text-color-white {
+        color: #FFFFFF;
+    }
+
+    .text-white {
+        color: #FFFFFF;
+    }
+
+    @each $color, $values in $colors {
+        @each $level, $hex in $values {
+            .text-color-#{$color}-#{$level} {
+                color: $hex;
+            }
+
+            .text-#{$color}-#{$level} {
+                color: $hex;
+            }
+        }
+    }
+}
+
+@include generate-color-utilities;
