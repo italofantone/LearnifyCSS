@@ -1,0 +1,28 @@
+$text-transform: (
+    uppercase,
+    lowercase,
+    capitalize,
+    none
+);
+
+@mixin text-transform-utilities {
+    @each $value in $text-transform {
+        .text-transform-#{$value} {
+            text-transform: $value;
+        }
+
+        @if $value !=none {
+            .#{$value} {
+                text-transform: $value;
+            }
+        }
+
+        @else {
+            .normal-case {
+                text-transform: $value;
+            }
+        }
+    }
+}
+
+@include text-transform-utilities;

@@ -7,12 +7,32 @@
         background-color: #000000;
     }
 
+    .bg-black {
+        background-color: #000000;
+    }
+
     .background-color-white {
         background-color: #FFFFFF;
     }
 
     .bg-color-white {
         background-color: #FFFFFF;
+    }
+
+    .bg-white {
+        background-color: #FFFFFF;
+    }
+
+    .background-color-transparent {
+        background-color: transparent;
+    }
+
+    .bg-color-transparent {
+        background-color: transparent;
+    }
+
+    .bg-transparent {
+        background-color: transparent;
     }
 
     @each $color, $values in $colors {
@@ -22,6 +42,10 @@
             }
 
             .bg-color-#{$color}-#{$level} {
+                background-color: $hex;
+            }
+
+            .bg-#{$color}-#{$level} {
                 background-color: $hex;
             }
         }

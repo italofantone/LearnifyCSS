@@ -7,12 +7,32 @@
         color: #000000;
     }
 
+    .color-black {
+        color: #000000;
+    }
+
     .text-color-white {
         color: #FFFFFF;
     }
 
     .text-white {
         color: #FFFFFF;
+    }
+
+    .color-white {
+        color: #FFFFFF;
+    }
+
+    .text-color-transparent {
+        color: transparent;
+    }
+
+    .text-transparent {
+        color: transparent;
+    }
+
+    .color-transparent {
+        color: transparent;
     }
 
     @each $color, $values in $colors {
@@ -22,6 +42,10 @@
             }
 
             .text-#{$color}-#{$level} {
+                color: $hex;
+            }
+
+            .color-#{$color}-#{$level} {
                 color: $hex;
             }
         }
