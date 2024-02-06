@@ -1,22 +1,17 @@
-$font-weight: (
-    100,
-    200,
-    300,
-    400,
-    500,
-    600,
-    700,
-    800,
-    900,
-    bold
-);
-
 @mixin font-weight-utilities {
-    @each $value in $font-weight {
-        .font-weight-#{$value} {
-            font-weight: $value;
-        }
-    }
+
+    @include generate-breakpoint-prefix-utilities((100,
+            200,
+            300,
+            400,
+            500,
+            600,
+            700,
+            800,
+            900,
+            bold), 'font-weight'
+    );
+
 }
 
 @include font-weight-utilities;

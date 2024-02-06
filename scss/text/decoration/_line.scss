@@ -9,18 +9,11 @@ $text-decoration-line: (
     @each $value in $text-decoration-line {
         $class-name: if($value ==none, no-underline, $value);
 
-        .text-decoration-line-#{$value} {
-            text-decoration-line: $value;
-        }
-
-        .#{$class-name} {
-            text-decoration-line: $value;
-        }
+        @include generate-breakpoint-prefix-utilities($value, 'text-decoration-line');
+        @include generate-breakpoint-prefix-utilities($value, 'text-decoration-line', $class-name);
     }
 
-    .text-decoration-line-through {
-        text-decoration-line: line-through;
-    }
+    @include generate-breakpoint-prefix-utilities(line-through, 'text-decoration-line', 'text-decoration-line-through');
 }
 
 @include text-decoration-line-utilities;

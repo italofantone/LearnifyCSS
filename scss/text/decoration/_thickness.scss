@@ -20,13 +20,9 @@ $text-decoration-thickness: (
     @each $value in $text-decoration-thickness {
         $thickness-value: if(type-of($value)==number, $value + px, $value);
 
-        .text-decoration-thickness-#{$value} {
-            text-decoration-thickness: $thickness-value;
-        }
+        @include generate-breakpoint-prefix-utilities($thickness-value, 'text-decoration-thickness');
 
-        .thickness-#{$value} {
-            text-decoration-thickness: $thickness-value;
-        }
+        @include generate-breakpoint-prefix-utilities($thickness-value, 'text-decoration-thickness', thickness-#{$value});
     }
 }
 

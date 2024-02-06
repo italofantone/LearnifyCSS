@@ -19,9 +19,7 @@ $font-size: (
 
 @mixin font-size-utilities {
     @each $key, $value in $font-size {
-        .font-size-#{$key} {
-            font-size: $value * $base;
-        }
+        @include generate-breakpoint-prefix-utilities($value * $base, 'font-size', font-size-#{$key});
     }
 }
 

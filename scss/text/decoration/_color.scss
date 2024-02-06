@@ -1,29 +1,14 @@
 @mixin text-decoration-color-utilities {
-    .text-decoration-color-black {
-        text-decoration-color: #000000;
-    }
+    @include generate-breakpoint-prefix-utilities(('black', 'white', 'transparent'), 'text-decoration-color');
 
-    .decoration-black {
-        text-decoration-color: #000000;
-    }
-
-    .text-decoration-color-white {
-        text-decoration-color: #FFFFFF;
-    }
-
-    .decoration-white {
-        text-decoration-color: #FFFFFF;
-    }
+    @include generate-breakpoint-prefix-utilities('black', 'text-decoration-color', 'decoration-black');
+    @include generate-breakpoint-prefix-utilities('white', 'text-decoration-color', 'decoration-white');
+    @include generate-breakpoint-prefix-utilities('transparent', 'text-decoration-color', 'decoration-transparent');
 
     @each $color, $values in $colors {
         @each $level, $hex in $values {
-            .text-decoration-color-#{$color}-#{$level} {
-                text-decoration-color: $hex;
-            }
-
-            .decoration-#{$color}-#{$level} {
-                text-decoration-color: $hex;
-            }
+            @include generate-breakpoint-prefix-utilities($hex, 'text-decoration-color', text-decoration-color-#{$color}-#{$level});
+            @include generate-breakpoint-prefix-utilities($hex, 'text-decoration-color', decoration-#{$color}-#{$level});
         }
     }
 }

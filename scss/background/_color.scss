@@ -1,53 +1,20 @@
 @mixin generate-background-color-utilities {
-    .background-color-black {
-        background-color: #000000;
-    }
+    @include generate-breakpoint-prefix-utilities(('black', 'white', 'transparent'), 'background-color');
 
-    .bg-color-black {
-        background-color: #000000;
-    }
+    @include generate-breakpoint-prefix-utilities('black', 'background-color', 'bg-color-black');
+    @include generate-breakpoint-prefix-utilities('black', 'background-color', 'bg-black');
 
-    .bg-black {
-        background-color: #000000;
-    }
+    @include generate-breakpoint-prefix-utilities('white', 'background-color', 'bg-color-white');
+    @include generate-breakpoint-prefix-utilities('white', 'background-color', 'bg-white');
 
-    .background-color-white {
-        background-color: #FFFFFF;
-    }
-
-    .bg-color-white {
-        background-color: #FFFFFF;
-    }
-
-    .bg-white {
-        background-color: #FFFFFF;
-    }
-
-    .background-color-transparent {
-        background-color: transparent;
-    }
-
-    .bg-color-transparent {
-        background-color: transparent;
-    }
-
-    .bg-transparent {
-        background-color: transparent;
-    }
+    @include generate-breakpoint-prefix-utilities('transparent', 'background-color', 'bg-color-transparent');
+    @include generate-breakpoint-prefix-utilities('transparent', 'background-color', 'bg-transparent');
 
     @each $color, $values in $colors {
         @each $level, $hex in $values {
-            .background-color-#{$color}-#{$level} {
-                background-color: $hex;
-            }
-
-            .bg-color-#{$color}-#{$level} {
-                background-color: $hex;
-            }
-
-            .bg-#{$color}-#{$level} {
-                background-color: $hex;
-            }
+            @include generate-breakpoint-prefix-utilities($hex, 'background-color', background-color-#{$color}-#{$level});
+            @include generate-breakpoint-prefix-utilities($hex, 'background-color', bg-color-#{$color}-#{$level});
+            @include generate-breakpoint-prefix-utilities($hex, 'background-color', bg-#{$color}-#{$level});
         }
     }
 }

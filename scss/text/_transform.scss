@@ -1,28 +1,12 @@
-$text-transform: (
-    uppercase,
-    lowercase,
-    capitalize,
-    none
-);
-
 @mixin text-transform-utilities {
-    @each $value in $text-transform {
-        .text-transform-#{$value} {
-            text-transform: $value;
-        }
 
-        @if $value !=none {
-            .#{$value} {
-                text-transform: $value;
-            }
-        }
+    @include generate-breakpoint-prefix-utilities((uppercase,
+            lowercase,
+            capitalize,
+            none), 'text-transform');
 
-        @else {
-            .normal-case {
-                text-transform: $value;
-            }
-        }
-    }
+    @include generate-breakpoint-prefix-utilities(none, 'text-transform', 'normal-case');
+
 }
 
 @include text-transform-utilities;

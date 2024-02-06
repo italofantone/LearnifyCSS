@@ -1,18 +1,12 @@
-$text-align: (
-    center,
-    end,
-    justify,
-    left,
-    right,
-    start
-);
-
 @mixin text-align-utilities {
-    @each $value in $text-align {
-        .text-align-#{$value} {
-            text-align: $value;
-        }
-    }
+
+    @include generate-breakpoint-prefix-utilities((center,
+            end,
+            justify,
+            left,
+            right,
+            start), 'text-align');
+
 }
 
 @include text-align-utilities;

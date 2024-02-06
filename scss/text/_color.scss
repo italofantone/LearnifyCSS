@@ -1,53 +1,20 @@
 @mixin generate-color-utilities {
-    .text-color-black {
-        color: #000000;
-    }
+    @include generate-breakpoint-prefix-utilities(('black', 'white', 'transparent'), 'color');
 
-    .text-black {
-        color: #000000;
-    }
+    @include generate-breakpoint-prefix-utilities('black', 'color', 'color-black');
+    @include generate-breakpoint-prefix-utilities('black', 'color', 'text-black');
 
-    .color-black {
-        color: #000000;
-    }
+    @include generate-breakpoint-prefix-utilities('white', 'color', 'color-white');
+    @include generate-breakpoint-prefix-utilities('white', 'color', 'text-white');
 
-    .text-color-white {
-        color: #FFFFFF;
-    }
-
-    .text-white {
-        color: #FFFFFF;
-    }
-
-    .color-white {
-        color: #FFFFFF;
-    }
-
-    .text-color-transparent {
-        color: transparent;
-    }
-
-    .text-transparent {
-        color: transparent;
-    }
-
-    .color-transparent {
-        color: transparent;
-    }
+    @include generate-breakpoint-prefix-utilities('transparent', 'color', 'color-transparent');
+    @include generate-breakpoint-prefix-utilities('transparent', 'color', 'text-transparent');
 
     @each $color, $values in $colors {
         @each $level, $hex in $values {
-            .text-color-#{$color}-#{$level} {
-                color: $hex;
-            }
-
-            .text-#{$color}-#{$level} {
-                color: $hex;
-            }
-
-            .color-#{$color}-#{$level} {
-                color: $hex;
-            }
+            @include generate-breakpoint-prefix-utilities($hex, 'color', text-color-#{$color}-#{$level});
+            @include generate-breakpoint-prefix-utilities($hex, 'color', text-#{$color}-#{$level});
+            @include generate-breakpoint-prefix-utilities($hex, 'color', color-#{$color}-#{$level});
         }
     }
 }

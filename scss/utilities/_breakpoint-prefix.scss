@@ -1,0 +1,30 @@
+$screens: (
+    sm: 640px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px
+);
+
+@mixin generate-breakpoint-prefix-utilities($styles, $property, $custom-class: null) {
+
+    @each $style in $styles {
+        $class: if($custom-class, #{$custom-class}, #{$property}-#{$style});
+
+        .#{$class} {
+            #{$property}: $style;
+        }
+    }
+
+    @each $breakpoint, $value in $screens {
+        @each $style in $styles {
+            $class: if($custom-class, #{$breakpoint}\:#{$custom-class}, #{$breakpoint}\:#{$property}-#{$style});
+
+            .#{$class} {
+                @media(min-width: map-get($screens, $breakpoint)) {
+                    #{$property}: $style;
+                }
+            }
+        }
+    }
+
+}
